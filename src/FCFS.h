@@ -20,14 +20,14 @@ ScheduleList FCFS::schedule() {
 
         // If current process arrival time is ahead of the last time frame 
         // creates an idle time frame which ends at arrival time of current process  
-        if(curTime < curProcess.getArrivalTime()) {
-            schList.addTimeFrame(TimeFrame(curTime, curProcess.getArrivalTime()));
-            curTime = curProcess.getArrivalTime();
+        if(curTime < curProcess -> getArrivalTime()) {
+            schList.addTimeFrame(TimeFrame(curTime, curProcess -> getArrivalTime(), nullptr));
+            curTime = curProcess -> getArrivalTime();
         }
 
-        TimeFrame curTimeFrame(curTime, curProcess.getBurstTime() + curTime);
+        TimeFrame curTimeFrame(curTime, curProcess -> getBurstTime() + curTime, curProcess);
         schList.addTimeFrame(curTimeFrame);
-        curTime += curProcess.getBurstTime();
+        curTime += curProcess -> getBurstTime();
     }
     return schList;
 }

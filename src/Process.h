@@ -19,11 +19,5 @@ public:
 };
 
 
-struct arrivalTime_LessThan {
-    bool operator () (const Process& p1, const Process& p2) const {
-        return p1.getArrivalTime() < p2.getArrivalTime();
-    }
-};
-
 
 #endif // _PROCESS

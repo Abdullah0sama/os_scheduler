@@ -2,10 +2,13 @@
 
 
 void Scheduler::addProcess(const Process& process) {
-    processContainer.push_back(process);
+    std::shared_ptr<const Process> copiedProcess(new Process(process));
+    processContainer.push_back(copiedProcess);
 }
 
 uint Scheduler::processCount() {
     return processContainer.size();
 }
+
+
 
