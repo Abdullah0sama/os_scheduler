@@ -6,7 +6,6 @@ Process::Process(std::string name, uint arrivalTime, uint burstTime, uint priori
     this -> arrivalTime = arrivalTime;
     this -> burstTime = burstTime;
     this -> priority = priority;
-    this -> leftBurstTime = this -> burstTime;
 }
 
 uint Process::getBurstTime() const{
@@ -24,14 +23,3 @@ uint Process::getPriority() const{
 std::string Process::getName() const{
     return name; 
 }
-
-uint Process::getLeftBurstTime() const {
-    return leftBurstTime;
-}
-void Process::resetLeftBurstTime() {
-    leftBurstTime = burstTime;
-}
-void Process::decrementLeftBurstTime(uint time) {
-    leftBurstTime -= time;
-}
-
