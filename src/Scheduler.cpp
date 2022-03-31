@@ -2,7 +2,7 @@
 
 
 void Scheduler::addProcess(const Process& process) {
-    std::shared_ptr<const Process> copiedProcess(new Process(process));
+    Process::ProcessPtr copiedProcess(std::make_shared<Process>(process));
     processContainer.push_back(copiedProcess);
 }
 

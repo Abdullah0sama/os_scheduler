@@ -12,7 +12,7 @@ public:
     const unsigned int start;
     const unsigned int end;
     std::shared_ptr<const Process> process;
-    TimeFrame(unsigned int start, unsigned int end, std::shared_ptr<const Process> process): start(start), end(end),  process(process){
+    TimeFrame(unsigned int start, unsigned int end, const Process::ProcessPtr& process): start(start), end(end),  process(process){
 
     };
     bool isIdle() {
