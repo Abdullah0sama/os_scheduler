@@ -7,7 +7,7 @@
 class TimeFrame
 {
 private:
-    /* data */
+    
 public:
     const unsigned int start;
     const unsigned int end;
@@ -15,10 +15,10 @@ public:
     TimeFrame(unsigned int start, unsigned int end, const Process::ProcessPtr& process=nullptr): start(start), end(end),  process(process){
 
     };
-    bool isIdle() {
+    inline bool isIdle() const {
         return process == nullptr;
     }
-    std::string getName() {
+    inline std::string getName() const{
         if(isIdle()) return "Idle";
         else return process -> getName();
     }
