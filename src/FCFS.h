@@ -9,10 +9,10 @@ class FCFS : public Scheduler
 private:
 
 public:
-    ScheduleList schedule(bool preemptive=false);
+    inline ScheduleList schedule();
 };
 
-ScheduleList FCFS::schedule(bool preemptive) {
+ScheduleList FCFS::schedule() {
     std::sort(processContainer.begin(), processContainer.end(), arrivalTime_LessThan());
     ScheduleList schList;
     unsigned int curTime = 0;
