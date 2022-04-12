@@ -63,5 +63,14 @@ struct burstTime_cmp {
     }
 };
 
+struct priority_cmp {
+    bool operator () (const Process::ProcessPtr& p1, const Process::ProcessPtr& p2) const {
+        if(p1 -> getArrivalTime() == p2 -> getArrivalTime())
+            return p1 -> getPriority() < p2 -> getPriority();
+        else 
+            return p1 -> getArrivalTime() < p2 -> getArrivalTime();
+    }
+};
+
 
 #endif // _SCHEDULER
