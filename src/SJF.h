@@ -10,20 +10,12 @@
 class SJF : public Scheduler
 {
 private:
-    class ActiveProcess {
-    public:
-        uint leftBurstTime;
-        Process::ProcessPtr process;
-        ActiveProcess(const Process::ProcessPtr& process) {
-            leftBurstTime = process -> getBurstTime();
-            this -> process = process;
-        }
-    };
+    
 public:
-    ScheduleList schedule(bool preemptive=false);
+    inline ScheduleList schedule();
 };
 
-ScheduleList SJF::schedule(bool preemptive) {
+ScheduleList SJF::schedule() {
     ScheduleList schList;
 
     if(processContainer.empty())
@@ -58,7 +50,7 @@ ScheduleList SJF::schedule(bool preemptive) {
         readyQueue.pop();
         // Assuming at first that it will use all burst time
         int usedBurstTime = curProcess.leftBurstTime;
-        if(preemptive) {
+        if(isPreemptive()) {
             // Checking if shorter processes have arrived during the burst time of the current process 
             int newArrivals = arrivedProcess;
             while(newArrivals < processContainer.size() && processContainer[newArrivals] -> getArrivalTime() <= curTime + curProcess.leftBurstTime) {

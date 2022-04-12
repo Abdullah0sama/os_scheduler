@@ -9,12 +9,36 @@
 
 class Scheduler
 {
+private:
+    bool preemptive;
+    int quantum;
 protected:
+    class ActiveProcess {
+    public:
+        unsigned int leftBurstTime;
+        Process::ProcessPtr process;
+        ActiveProcess(const Process::ProcessPtr& process) {
+            leftBurstTime = process -> getBurstTime();
+            this -> process = process;
+        }
+    };
     std::vector<Process::ProcessPtr> processContainer;
 public:
-    virtual ScheduleList schedule(bool preemptive=false) = 0;
+    Scheduler() {
+        preemptive = false;
+        quantum = 1;
+    }
+    virtual ScheduleList schedule() = 0;
     void addProcess(const Process& process);
     unsigned int processCount();
+    inline bool isPreemptive() {
+        return preemptive;
+    };
+    inline void setPreemptive(bool state) {
+        preemptive = state;
+    }
+
+    enum Types {FCFS, SJF, PRIORITY, RB};
 };
 
 struct arrivalTime_LessThan {
