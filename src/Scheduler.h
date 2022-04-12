@@ -31,6 +31,15 @@ public:
     virtual ScheduleList schedule() = 0;
     void addProcess(const Process& process);
     unsigned int processCount();
+
+    inline int getQuantum() {
+        return quantum;
+    };
+    inline void setQuantum(unsigned int q) {
+        if(q != 0)
+            quantum = q;
+    };
+
     inline bool isPreemptive() {
         return preemptive;
     };
