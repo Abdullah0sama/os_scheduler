@@ -11,7 +11,7 @@ private:
 public:
     const unsigned int start;
     const unsigned int end;
-    std::shared_ptr<const Process> process;
+    Process::ProcessPtr process;
     TimeFrame(unsigned int start, unsigned int end, const Process::ProcessPtr& process=nullptr): start(start), end(end),  process(process){
 
     };
