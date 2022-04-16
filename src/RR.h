@@ -9,7 +9,7 @@ class RR: public Scheduler
 private:
     /* data */
 public:
-    ScheduleList schedule();
+    inline ScheduleList schedule();
 };
 
 
@@ -43,6 +43,10 @@ ScheduleList RR::schedule() {
         } else {
             usedBurstTime = getQuantum();
             curProcess.leftBurstTime -= usedBurstTime;
+            while(arrivedProcess < processContainer.size() && processContainer[arrivedProcess] -> getArrivalTime() <= curTime + usedBurstTime) {
+                readyQueue.push(ActiveProcess(processContainer[arrivedProcess]));
+                arrivedProcess++;
+            }
             readyQueue.push(curProcess);
         }
         schList.addTimeFrame(TimeFrame(curTime, curTime + usedBurstTime, curProcess.process));

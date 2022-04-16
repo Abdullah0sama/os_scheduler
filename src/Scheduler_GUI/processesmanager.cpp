@@ -14,13 +14,12 @@ ProcessesManager::~ProcessesManager() {
 void ProcessesManager::initialize(int schedulerType) {
 
     msgBox = new QMessageBox(QMessageBox::Warning, "Warning", "", QMessageBox::Close);
-
+    setStyleSheet("QSpinBox, QLineEdit{ background-color: #DDDDDD; }");
     processNameInput = new QLineEdit();
     processNameInput -> setPlaceholderText("Process Name");
 
     burstTimeInput = new QSpinBox();
     arrivalTimeInput = new QSpinBox();
-
     burstTimeInput -> setMaximum(MAX_QSPINBOX);
     // Process should atleast 1 busrt time
     burstTimeInput -> setMinimum(1);

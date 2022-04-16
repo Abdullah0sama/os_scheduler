@@ -1,23 +1,20 @@
 #include "mainwindow.h"
-#include "./ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
-    setStyleSheet("background: #3F72AF; color: #00092C ");
+    setStyleSheet("background: #2E94B9; color: #000000 ");
     QStringList schedulersNames = {"First Come First Serve", "Shortest Job First", "Priority", "Round Robin"};
-
     header = new QLabel("OS Scheduler");
     header -> setAlignment(Qt::AlignCenter);
-    header -> setStyleSheet("font-size: 80px; font-weight:bold;margin:70px; color: #303841");
+    header -> setStyleSheet("font-size: 100px; font-weight:bold; \
+                            margin: 70px; color: #FED049;");
 
     schedulerSelect = new QComboBox();
     schedulerSelect -> addItems(schedulersNames);
-
+    schedulerSelect -> setStyleSheet("QComboBox, QAbstractItemView {background-color: #DDDDDD;}\
+                                        ");
     continueButton = new QPushButton("Continue");
-
 
     QVBoxLayout *mainLayout = new QVBoxLayout();
     mainLayout -> addWidget(header);
@@ -30,18 +27,15 @@ MainWindow::MainWindow(QWidget *parent)
     wid -> setLayout(mainLayout);
     stackedWidget = new QStackedWidget();
     stackedWidget -> addWidget(wid);
-
     setCentralWidget(stackedWidget);
-    setFixedSize(1000, 600);
+    setMinimumSize(1000, 600);
+
     connect(continueButton, SIGNAL (clicked()), this, SLOT (onContinueButtonClicked()));
  }
 
+MainWindow::~MainWindow() {
 
-MainWindow::~MainWindow()
-{
-    delete ui;
 }
-
 void MainWindow::onContinueButtonClicked() {
     int type = 0;
     Scheduler *scheduler = nullptr;

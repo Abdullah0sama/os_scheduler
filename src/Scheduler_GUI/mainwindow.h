@@ -29,7 +29,6 @@ public:
     ~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
     QLabel *header;
     QComboBox *schedulerSelect;
     QPushButton *continueButton;
