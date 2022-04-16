@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     schedulerSelect = new QComboBox();
     schedulerSelect -> addItems(schedulersNames);
-    schedulerSelect -> setStyleSheet("QComboBox, QAbstractItemView {background-color: #DDDDDD;}\
+    schedulerSelect -> setStyleSheet("QComboBox, QAbstractItemView {background-color: #F8FCEB;}\
                                         ");
     continueButton = new QPushButton("Continue");
 

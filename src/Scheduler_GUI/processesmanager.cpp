@@ -14,7 +14,7 @@ ProcessesManager::~ProcessesManager() {
 void ProcessesManager::initialize(int schedulerType) {
 
     msgBox = new QMessageBox(QMessageBox::Warning, "Warning", "", QMessageBox::Close);
-    setStyleSheet("QSpinBox, QLineEdit{ background-color: #DDDDDD; }");
+    setStyleSheet("QSpinBox, QLineEdit{ background-color: #F8FCEB; }");
     processNameInput = new QLineEdit();
     processNameInput -> setPlaceholderText("Process Name");
 
@@ -78,12 +78,12 @@ void ProcessesManager::initialize(int schedulerType) {
     processesTable -> setEditTriggers(QAbstractItemView::NoEditTriggers);
     processesTable -> setShowGrid(false);
     processesTable -> verticalHeader() -> setVisible(false);
-    processesTable -> setStyleSheet("QTableView::item { border-bottom: 1px solid black; }");
     QStringList colNames = {"Name", "Arrival Time", "BurstTime", "Priority"};
 
     processesTable -> setColumnCount(colNames.size());
     processesTable -> setHorizontalHeaderLabels(colNames);
     processesTable -> horizontalHeader() -> setSectionResizeMode(QHeaderView::Stretch);
+    processesTable -> setSelectionMode(QAbstractItemView::NoSelection);
     if(schedulerType != Scheduler::PRIORITY) {
         processesTable -> setColumnHidden(3, true);
     }
@@ -177,5 +177,8 @@ void ProcessesManager::onBackClicked() {
 QTableWidgetItem *ProcessesManager::createCenteredQTableWidgetItem(const QString& text) {
     QTableWidgetItem *tableItem = new QTableWidgetItem(text);
     tableItem -> setTextAlignment(Qt::AlignCenter);
+    tableItem -> setBackground(QBrush(QColor("#F8FCEB")));
+
+
     return tableItem;
 }
