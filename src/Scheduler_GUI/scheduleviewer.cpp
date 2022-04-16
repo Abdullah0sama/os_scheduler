@@ -8,17 +8,29 @@ ScheduleViewer::ScheduleViewer(const ScheduleList& scheduleList, QWidget *parent
 
     backButton = new QPushButton("Back");
     container = new QVBoxLayout(this);
-    QTableWidget* grantChart = new QTableWidget();
     QTableWidget* processMetrics = new QTableWidget();
 
-    setupGrantChart(grantChart, scheduleList.getTimeline());
     setupProcessesMetrics(processMetrics, scheduleList);
-    container ->addWidget(grantChart, 50);
+    QHBoxLayout* grantLayout = new QHBoxLayout();
+    grantLayout -> setAlignment(Qt::AlignCenter);
+
+    setupGrantChart(grantLayout, scheduleList.getTimeline());
+    container -> addLayout(grantLayout);
     container -> addWidget(processMetrics, 0);
     container -> addWidget(backButton, 0, Qt::AlignRight);
+
     connect(backButton, SIGNAL (clicked()), this, SLOT (onBackClicked()));
 }
 
+void ScheduleViewer::setupGrantChart(QHBoxLayout* layout, const std::vector<TimeFrame>& timeLine) {
+    layout -> setSpacing(0);
+
+    QVBoxLayout* column;
+    for(int i = 0; i < timeLine.size(); ++i) {
+        layout -> addLayout(makeGrantChartBlock(timeLine[i], (i + 1 == timeLine.size()) ));
+    }
+
+}
 void ScheduleViewer::setupGrantChart(QTableWidget* grantChart, const std::vector<TimeFrame>& timeLine) {
     grantChart -> setRowCount(2);
     grantChart -> setColumnCount(timeLine.size() + 1);
@@ -108,4 +120,34 @@ QTableWidgetItem* ScheduleViewer::makeCell(const QString& text, const QString& b
     cell -> setBackground(QBrush(QColor(bckColor)));
     cell -> setForeground(QBrush(QColor(frgColor)));
     return cell;
+}
+
+QVBoxLayout* ScheduleViewer::makeGrantChartBlock(const TimeFrame& timeframe, bool isEnd) {
+    QVBoxLayout* col = new QVBoxLayout();
+
+    QLabel* processBlock = new QLabel(QString::fromStdString(timeframe.getName()));
+    processBlock -> setAlignment(Qt::AlignCenter);
+    processBlock -> setStyleSheet("background-color: #DDDDDD; color: black; border-left: 1px dotted black; padding: 10px");
+    int width = std::min( (timeframe.end - timeframe.start) * 20, uint(70));
+    int height = 60;
+    processBlock -> setMinimumSize(width, height);
+
+    QHBoxLayout* timeLayout = new QHBoxLayout();
+    QString timeBlockStyle = "background-color: #E6E6FA; color: black; padding-right:2px";
+    QLabel* startTimeBlock = new QLabel(QString::number(timeframe.start));
+    startTimeBlock -> setAlignment(Qt::AlignTop | Qt::AlignLeft);
+    startTimeBlock -> setStyleSheet(timeBlockStyle);
+    startTimeBlock -> setMinimumSize(width, 20);
+    timeLayout -> addWidget((startTimeBlock));
+    if(isEnd) {
+        QLabel* endTimeBlock = new QLabel(QString::number(timeframe.end));
+        endTimeBlock -> setStyleSheet(timeBlockStyle);
+        endTimeBlock -> setAlignment(Qt::AlignTop | Qt::AlignRight);
+        timeLayout -> addWidget(endTimeBlock);
+    }
+
+    col -> addWidget(processBlock);
+    col -> addLayout(timeLayout);
+
+    return col;
 }

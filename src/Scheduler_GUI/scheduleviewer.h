@@ -22,7 +22,8 @@ private:
     QStackedWidget *stackedWidget;
     QPushButton *backButton;
     QVBoxLayout *container;
-
+    QVBoxLayout* makeGrantChartBlock(const TimeFrame& timeframe, bool isEnd);
+    void setupGrantChart(QHBoxLayout* grantChart, const std::vector<TimeFrame>& timeLine);
     void setupGrantChart(QTableWidget* grantChart, const std::vector<TimeFrame>& timeLine);
     void  setupProcessesMetrics(QTableWidget* processTable, const ScheduleList& scheduleList);
     QTableWidgetItem* makeCell(const QString& text, const QString& bckColor = "#F8FCEB", const QString& frgColor="#393939");
