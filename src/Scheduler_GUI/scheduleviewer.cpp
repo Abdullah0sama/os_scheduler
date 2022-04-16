@@ -8,16 +8,26 @@ ScheduleViewer::ScheduleViewer(const ScheduleList& scheduleList, QWidget *parent
 
     backButton = new QPushButton("Back");
     container = new QVBoxLayout(this);
+    QScrollArea *scrollable = new QScrollArea();
+
     QTableWidget* processMetrics = new QTableWidget();
 
     setupProcessesMetrics(processMetrics, scheduleList);
+    scrollable ->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollable -> setStyleSheet("padding:0; margin:0; border:0;");
     QHBoxLayout* grantLayout = new QHBoxLayout();
     grantLayout -> setAlignment(Qt::AlignCenter);
 
     setupGrantChart(grantLayout, scheduleList.getTimeline());
-    container -> addLayout(grantLayout);
+    QWidget* grantChart = new QWidget();
+    grantChart -> setLayout(grantLayout);
+    scrollable -> setWidget(grantChart);
+    scrollable -> setAlignment(Qt::AlignCenter);
+
+//    container -> addLayout(grantLayout);
+    container -> addWidget(scrollable, 0, Qt::AlignTop);
     container -> addWidget(processMetrics, 0);
-    container -> addWidget(backButton, 0, Qt::AlignRight);
+    container -> addWidget(backButton, 0, Qt::AlignRight | Qt::AlignBottom);
 
     connect(backButton, SIGNAL (clicked()), this, SLOT (onBackClicked()));
 }

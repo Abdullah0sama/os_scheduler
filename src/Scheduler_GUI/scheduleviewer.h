@@ -13,6 +13,8 @@
 #include <QTableWidget>
 #include <QHeaderView>
 #include <math.h>
+#include <QScrollArea>
+
 class ScheduleViewer : public QWidget
 {
     Q_OBJECT
