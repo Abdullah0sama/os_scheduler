@@ -11,7 +11,8 @@
 #include <QDebug>
 #include <QVBoxLayout>
 #include <QTableWidget>
-
+#include <QHeaderView>
+#include <math.h>
 class ScheduleViewer : public QWidget
 {
     Q_OBJECT
@@ -22,7 +23,8 @@ private:
     QPushButton *backButton;
     QVBoxLayout *container;
 
-    void setupGrantChart(QTableWidget* grantChart, const ScheduleList& schedule);
+    void setupGrantChart(QTableWidget* grantChart, const std::vector<TimeFrame>& timeLine);
+    void  setupProcessesMetrics(QTableWidget* processTable, const ScheduleList& scheduleList);
 private slots:
     void onBackClicked();
 signals:

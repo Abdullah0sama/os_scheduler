@@ -75,6 +75,7 @@ void ProcessesManager::initialize(int schedulerType) {
     }
 
     processesTable = new QTableWidget();
+    processesTable -> setFrameStyle(QFrame::NoFrame);
     processesTable -> setEditTriggers(QAbstractItemView::NoEditTriggers);
     processesTable -> setShowGrid(false);
     processesTable -> verticalHeader() -> setVisible(false);

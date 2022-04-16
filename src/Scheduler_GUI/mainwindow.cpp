@@ -6,12 +6,12 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-//    setStyleSheet("background: black; color:white; border:white;");
+    setStyleSheet("background: #3F72AF; color: #00092C ");
     QStringList schedulersNames = {"First Come First Serve", "Shortest Job First", "Priority", "Round Robin"};
 
     header = new QLabel("OS Scheduler");
     header -> setAlignment(Qt::AlignCenter);
-    header -> setStyleSheet("font-size: 80px; font-weight:bold;margin:50px;");
+    header -> setStyleSheet("font-size: 80px; font-weight:bold;margin:70px; color: #303841");
 
     schedulerSelect = new QComboBox();
     schedulerSelect -> addItems(schedulersNames);
