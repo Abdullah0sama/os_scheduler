@@ -25,6 +25,7 @@ private:
 
     void setupGrantChart(QTableWidget* grantChart, const std::vector<TimeFrame>& timeLine);
     void  setupProcessesMetrics(QTableWidget* processTable, const ScheduleList& scheduleList);
+    QTableWidgetItem* makeCell(const QString& text, const QString& bckColor = "#F8FCEB", const QString& frgColor="#393939");
 private slots:
     void onBackClicked();
 signals:
