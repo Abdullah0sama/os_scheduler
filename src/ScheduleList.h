@@ -8,12 +8,12 @@
 class PMetric
 {  
 public:
-    int waitingTime;
-    int turnAroundTime;
+    double waitingTime;
+    double turnAroundTime;
     PMetric() {
 
     }
-    PMetric(int waitingT, int turnAroundT) {
+    PMetric(double waitingT, double turnAroundT) {
         waitingTime = waitingT;
         turnAroundTime = turnAroundT;
     }

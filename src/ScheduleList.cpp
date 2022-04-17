@@ -3,8 +3,8 @@
 void ScheduleList::addTimeFrame(const TimeFrame& timeFrame) {
     timeline.push_back(timeFrame);
     if(!timeFrame.isIdle()) {
-        int turnAroundTime = timeFrame.end - timeFrame.process -> getArrivalTime();
-        int waitingTime = turnAroundTime - timeFrame.process -> getBurstTime();
+        double turnAroundTime = timeFrame.end - timeFrame.process -> getArrivalTime();
+        double waitingTime = turnAroundTime - timeFrame.process -> getBurstTime();
         processMetrics[timeFrame.process] = PMetric(waitingTime, turnAroundTime);
     }
 }

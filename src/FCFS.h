@@ -15,7 +15,7 @@ public:
 ScheduleList FCFS::schedule() {
     std::sort(processContainer.begin(), processContainer.end(), arrivalTime_cmp());
     ScheduleList schList;
-    unsigned int curTime = 0;
+    double curTime = 0;
     for(auto& curProcess: processContainer) {
 
         // If current process arrival time is ahead of the last time frame 

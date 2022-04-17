@@ -30,7 +30,7 @@ ScheduleList SJF::schedule() {
         }
     };
     std::priority_queue<ActiveProcess, std::vector<ActiveProcess>, decltype( cmp )> readyQueue( cmp );
-    int curTime = 0;
+    double curTime = 0;
 
     int arrivedProcess = 0; 
     while(!readyQueue.empty() || arrivedProcess < processContainer.size()){
@@ -49,7 +49,7 @@ ScheduleList SJF::schedule() {
         ActiveProcess curProcess = readyQueue.top();
         readyQueue.pop();
         // Assuming at first that it will use all burst time
-        int usedBurstTime = curProcess.leftBurstTime;
+        double usedBurstTime = curProcess.leftBurstTime;
         if(isPreemptive()) {
             // Checking if shorter processes have arrived during the burst time of the current process 
             int newArrivals = arrivedProcess;

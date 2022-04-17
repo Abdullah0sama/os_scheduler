@@ -15,7 +15,7 @@ private:
 protected:
     class ActiveProcess {
     public:
-        unsigned int leftBurstTime;
+        double leftBurstTime;
         Process::ProcessPtr process;
         ActiveProcess(const Process::ProcessPtr& process) {
             leftBurstTime = process -> getBurstTime();

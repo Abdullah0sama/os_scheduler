@@ -1,18 +1,20 @@
 #include "Process.h"
 
 
-Process::Process(std::string name, uint arrivalTime, uint burstTime, uint priority) {   
+Process::Process(std::string name, double arrivalTime, double burstTime, uint priority) {   
+    if(arrivalTime < 0 || burstTime < 0) 
+        ;
     this -> name = name;
     this -> arrivalTime = arrivalTime;
     this -> burstTime = burstTime;
     this -> priority = priority;
 }
 
-uint Process::getBurstTime() const{
+double Process::getBurstTime() const{
     return burstTime;
 }
 
-uint Process::getArrivalTime() const{
+double Process::getArrivalTime() const{
     return arrivalTime;
 }
 

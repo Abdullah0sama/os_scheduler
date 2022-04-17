@@ -68,7 +68,7 @@ void ScheduleViewer::setupGrantChart(QTableWidget* grantChart, const std::vector
         item -> setTextAlignment(Qt::AlignCenter);
         grantChart -> setItem(0, i, item);
 
-        grantChart -> setColumnWidth(i, std::min(uint(150) ,(timeLine[i].end - timeLine[i].start) * 5));
+        grantChart -> setColumnWidth(i, std::min(150. ,(timeLine[i].end - timeLine[i].start) * 5));
         QTableWidgetItem* time = new QTableWidgetItem(QString::number(timeLine[i].start));
 
         grantChart -> setItem(1, i, time);
@@ -89,8 +89,8 @@ void ScheduleViewer::setupProcessesMetrics(QTableWidget* processTable, const Sch
     processTable -> horizontalHeader() -> setSectionResizeMode(QHeaderView::Stretch);
 
     const auto & process = scheduleList.getProcesses();
-    int totalWaitingTime = 0;
-    int totalTurnAroundTime = 0;
+    double totalWaitingTime = 0;
+    double totalTurnAroundTime = 0;
 
 
 
@@ -98,7 +98,6 @@ void ScheduleViewer::setupProcessesMetrics(QTableWidget* processTable, const Sch
         PMetric pmetric = scheduleList.getProcessMetric(process[i]);
         totalWaitingTime += pmetric.waitingTime;
         totalTurnAroundTime += pmetric.turnAroundTime;
-
         QTableWidgetItem* waitingTime = makeCell(QString::number(pmetric.waitingTime));
         QTableWidgetItem* turnAroundTime = makeCell(QString::number(pmetric.turnAroundTime));
         QTableWidgetItem *name = makeCell(QString::fromStdString(process[i]->getName()));
@@ -109,9 +108,9 @@ void ScheduleViewer::setupProcessesMetrics(QTableWidget* processTable, const Sch
     }
 
 
-    QTableWidgetItem *avgWaitItem = makeCell(QString::number((totalWaitingTime * 1.0) / scheduleList.numberOfProcesses()),
+    QTableWidgetItem *avgWaitItem = makeCell(QString::number((totalWaitingTime) / scheduleList.numberOfProcesses()),
                                              "#303841", "#EEEEEE");
-    QTableWidgetItem *avgTurnAroundItem = makeCell(QString::number((totalTurnAroundTime * 1.0) / scheduleList.numberOfProcesses()),
+    QTableWidgetItem *avgTurnAroundItem = makeCell(QString::number((totalTurnAroundTime) / scheduleList.numberOfProcesses()),
                                                    "#303841", "#EEEEEE");
     QTableWidgetItem *name = makeCell("Average", "#303841", "#EEEEEE");
 
@@ -138,7 +137,7 @@ QVBoxLayout* ScheduleViewer::makeGrantChartBlock(const TimeFrame& timeframe, boo
     QLabel* processBlock = new QLabel(QString::fromStdString(timeframe.getName()));
     processBlock -> setAlignment(Qt::AlignCenter);
     processBlock -> setStyleSheet("background-color: #DDDDDD; color: black; border-left: 1px dotted black; padding: 10px");
-    int width = std::min( (timeframe.end - timeframe.start) * 20, uint(70));
+    int width = std::min( (timeframe.end - timeframe.start) * 20, 70.0);
     int height = 60;
     processBlock -> setMinimumSize(width, height);
 

@@ -9,10 +9,10 @@ class TimeFrame
 private:
     
 public:
-    const unsigned int start;
-    const unsigned int end;
+    const double start;
+    const double end;
     Process::ProcessPtr process;
-    TimeFrame(unsigned int start, unsigned int end, const Process::ProcessPtr& process=nullptr): start(start), end(end),  process(process){
+    TimeFrame(double start, double end, const Process::ProcessPtr& process=nullptr): start(start), end(end),  process(process){
 
     };
     inline bool isIdle() const {

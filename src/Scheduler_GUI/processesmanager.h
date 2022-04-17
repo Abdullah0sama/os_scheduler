@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QTableWidget>
 #include <QPushButton>
-#include <QSpinBox>
+#include <QDoubleSpinBox>
 #include <QLineEdit>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -16,7 +16,7 @@
 #include <QMessageBox>
 #include "scheduleviewer.h"
 #include <QTableWidgetItem>
-
+#include <QSpinBox>
 #include "../ScheduleList.h"
 #include "../SJF.h"
 #include "../FCFS.h"
@@ -33,8 +33,8 @@ public:
     void initialize(int schedulerType);
 private:
     QTableWidgetItem *createCenteredQTableWidgetItem(const QString& text);
-    QSpinBox *arrivalTimeInput;
-    QSpinBox *burstTimeInput;
+    QDoubleSpinBox *arrivalTimeInput;
+    QDoubleSpinBox *burstTimeInput;
     QSpinBox *priorityInput;
     QLabel *arrivalTimeLabel;
     QLabel *burstTimeLabel;

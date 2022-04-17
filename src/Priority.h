@@ -20,7 +20,7 @@ ScheduleList Priority::schedule() {
         return schList;        
     sort(processContainer.begin(), processContainer.end(), priority_cmp());
 
-    int curTime = 0;
+    double curTime = 0;
     int arrivedProcess = 0;
     auto cmp = [] (const ActiveProcess& p1, const ActiveProcess& p2) {
         if(p1.process -> getPriority() == p2.process -> getPriority()) {
@@ -46,7 +46,7 @@ ScheduleList Priority::schedule() {
 
         ActiveProcess curProcess = readyQueue.top();
         readyQueue.pop();
-        int usedBurstTime = curProcess.leftBurstTime;
+        double usedBurstTime = curProcess.leftBurstTime;
         if(isPreemptive()) {
             int newArrivals = arrivedProcess;
             // Checking if higher priority processes have arrived during the left burst time of the current process 

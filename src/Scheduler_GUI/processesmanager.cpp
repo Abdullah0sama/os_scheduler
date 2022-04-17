@@ -14,12 +14,12 @@ ProcessesManager::~ProcessesManager() {
 void ProcessesManager::initialize(int schedulerType) {
 
     msgBox = new QMessageBox(QMessageBox::Warning, "Warning", "", QMessageBox::Close);
-    setStyleSheet("QSpinBox, QLineEdit{ background-color: #F8FCEB; }");
+    setStyleSheet("QSpinBox, QLineEdit, QDoubleSpinBox{ background-color: #F8FCEB; }");
     processNameInput = new QLineEdit();
     processNameInput -> setPlaceholderText("Process Name");
 
-    burstTimeInput = new QSpinBox();
-    arrivalTimeInput = new QSpinBox();
+    burstTimeInput = new QDoubleSpinBox();
+    arrivalTimeInput = new QDoubleSpinBox();
     burstTimeInput -> setMaximum(MAX_QSPINBOX);
     // Process should atleast 1 busrt time
     burstTimeInput -> setMinimum(1);
@@ -120,8 +120,8 @@ void ProcessesManager::onAddProcessClicked() {
     }
 
     // Getting values from input fields
-    int arrivalTime = arrivalTimeInput -> value();
-    int burstTime = burstTimeInput -> value();
+    double arrivalTime = arrivalTimeInput -> value();
+    double burstTime = burstTimeInput -> value();
     int priority = priorityInput ->value();
     QString processName = processNameInput -> text();
 

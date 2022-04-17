@@ -20,7 +20,7 @@ ScheduleList RR::schedule() {
 
     std::sort(processContainer.begin(), processContainer.end(), arrivalTime_cmp());
     std::queue<ActiveProcess> readyQueue;
-    int curTime = 0;
+    double curTime = 0;
     int arrivedProcess = 0;
 
     while(arrivedProcess < processContainer.size() || !readyQueue.empty()) {
@@ -37,7 +37,7 @@ ScheduleList RR::schedule() {
         
         ActiveProcess curProcess = readyQueue.front();
         readyQueue.pop();
-        int usedBurstTime = -1;
+        double usedBurstTime = -1;
         if(curProcess.leftBurstTime <= getQuantum()) {
             usedBurstTime = curProcess.leftBurstTime;
         } else {
