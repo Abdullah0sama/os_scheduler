@@ -136,7 +136,8 @@ QVBoxLayout* ScheduleViewer::makeGrantChartBlock(const TimeFrame& timeframe, boo
 
     QLabel* processBlock = new QLabel(QString::fromStdString(timeframe.getName()));
     processBlock -> setAlignment(Qt::AlignCenter);
-    processBlock -> setStyleSheet("background-color: #DDDDDD; color: black; border-left: 1px dotted black; padding: 10px");
+    QString bckColor = (timeframe.isIdle()) ? "#EEEDDE" :"#DDDDDD";
+    processBlock -> setStyleSheet("background-color: " + bckColor + "; color: black; border-left: 1px dotted black; padding: 10px");
     int width = std::min( (timeframe.end - timeframe.start) * 20, 70.0);
     int height = 60;
     processBlock -> setMinimumSize(width, height);
