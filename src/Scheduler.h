@@ -50,7 +50,7 @@ public:
     enum Types {FCFS, SJF, PRIORITY, RB};
 };
 
-struct arrivalTime_LessThan {
+struct arrivalTime_cmp {
     bool operator () (const Process::ProcessPtr& p1, const Process::ProcessPtr& p2) const {
         return p1 -> getArrivalTime() < p2 -> getArrivalTime();
     }

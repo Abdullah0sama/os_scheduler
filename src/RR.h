@@ -18,7 +18,7 @@ ScheduleList RR::schedule() {
     if(processContainer.empty()) 
         return schList;
 
-    std::sort(processContainer.begin(), processContainer.end(), arrivalTime_LessThan());
+    std::sort(processContainer.begin(), processContainer.end(), arrivalTime_cmp());
     std::queue<ActiveProcess> readyQueue;
     int curTime = 0;
     int arrivedProcess = 0;

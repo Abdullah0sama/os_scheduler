@@ -53,13 +53,12 @@ ScheduleList SJF::schedule() {
         if(isPreemptive()) {
             // Checking if shorter processes have arrived during the burst time of the current process 
             int newArrivals = arrivedProcess;
-            while(newArrivals < processContainer.size() && processContainer[newArrivals] -> getArrivalTime() <= curTime + curProcess.leftBurstTime) {
+            while(newArrivals < processContainer.size() && processContainer[newArrivals] -> getArrivalTime() < curTime + curProcess.leftBurstTime) {
                 // Preempting current process
                 if(processContainer[newArrivals] -> getBurstTime() < curProcess.leftBurstTime - (processContainer[newArrivals] -> getArrivalTime() - curTime) ) {
                     usedBurstTime = processContainer[newArrivals] -> getArrivalTime() - curTime;
                     curProcess.leftBurstTime -= usedBurstTime;
-                    if(curProcess.leftBurstTime) 
-                        readyQueue.push(curProcess);
+                    readyQueue.push(curProcess);
                     break;
                 }
                 newArrivals++;

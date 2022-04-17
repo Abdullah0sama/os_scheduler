@@ -13,7 +13,7 @@ public:
 };
 
 ScheduleList FCFS::schedule() {
-    std::sort(processContainer.begin(), processContainer.end(), arrivalTime_LessThan());
+    std::sort(processContainer.begin(), processContainer.end(), arrivalTime_cmp());
     ScheduleList schList;
     unsigned int curTime = 0;
     for(auto& curProcess: processContainer) {
