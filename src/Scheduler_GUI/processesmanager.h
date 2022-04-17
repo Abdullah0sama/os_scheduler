@@ -25,7 +25,7 @@
 class ProcessesManager : public QWidget
 {
     Q_OBJECT
-const int MAX_QSPINBOX =  500;
+const int MAX_QSPINBOX =  1500;
 
 public:
     explicit ProcessesManager(QStackedWidget *stackedWidget, Scheduler *scheduler, QWidget *parent = nullptr, int schedulerType = 0);

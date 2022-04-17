@@ -7,14 +7,13 @@ MainWindow::MainWindow(QWidget *parent)
     QStringList schedulersNames = {"First Come First Serve", "Shortest Job First", "Priority", "Round Robin"};
     header = new QLabel("OS Scheduler");
     header -> setAlignment(Qt::AlignCenter);
-    header -> setStyleSheet("font-size: 100px; font-weight:bold; \
-                            margin: 70px; color: #FED049;");
+    header -> setStyleSheet("QLabel { font-size: 100px; font-weight:bold; \
+                            margin: 70px; color: #FFB72B; }");
 
     schedulerSelect = new QComboBox();
     schedulerSelect -> addItems(schedulersNames);
-    schedulerSelect -> setStyleSheet("QComboBox, QAbstractItemView {background-color: #F8FCEB;}\
-                                        ");
-    continueButton = new QPushButton("Continue");
+    schedulerSelect -> setStyleSheet("QComboBox, QAbstractItemView { background-color: #F8FCEB; }");
+    continueButton = new QPushButton("Next");
 
     QVBoxLayout *mainLayout = new QVBoxLayout();
     mainLayout -> addWidget(header);

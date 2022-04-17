@@ -64,7 +64,7 @@ void ProcessesManager::initialize(int schedulerType) {
     }
     QLabel *quantumLabel = new QLabel("Quantum");
     quantumTimeInput = new QSpinBox();
-    quantumTimeInput -> setMaximum(500);
+    quantumTimeInput -> setMaximum(1500);
     quantumTimeInput -> setMinimum(1);
     inputBox -> addWidget(quantumLabel);
     inputBox -> addWidget(quantumTimeInput);
