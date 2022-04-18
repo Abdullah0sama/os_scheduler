@@ -12,3 +12,6 @@ Simulating how operating system schedule processes
 - Priority Scheduling, Preemptive and Non-preemptive 
 - Shortest Job First (SJF), Preemptive and Non-preemptive
 - Round Robin 
+
+## Demo
+![Demonstrating application by selecting Round Robin scheduler and adding processes and getting at the end the Gantt chart and waiting time and turnaround time for each process](https://github.com/Abdullah0sama/os_scheduler/scheduler_demo.gif)
