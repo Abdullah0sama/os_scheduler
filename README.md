@@ -14,4 +14,4 @@ Simulating how operating system schedule processes
 - Round Robin 
 
 ## Demo
-![Demonstrating application by selecting Round Robin scheduler and adding processes and getting at the end the Gantt chart and waiting time and turnaround time for each process](https://github.com/Abdullah0sama/os_scheduler/scheduler_demo.gif)
+![Demonstrating application by selecting Round Robin scheduler and adding processes and getting at the end the Gantt chart and waiting time and turnaround time for each process](https://github.com/Abdullah0sama/os_scheduler/raw/main/scheduler_demo.gif)
